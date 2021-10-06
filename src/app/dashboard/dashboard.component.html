@@ -1,0 +1,130 @@
+<div class='row  p-3 bg-secondary'>
+    <div class="col-4"></div>
+    <div class="col-4 text-white text-center"> <strong>Welcome {{activeUser}} ...!!!</strong></div>
+<p> logged in date unformatted {{loggedInDate}}</p>
+<p> logged in date formatted {{loggedInDate | date}}</p>
+<p> logged in date formatted {{loggedInDate | date :'short'}}</p>
+<p> logged in date formatted and piped to uppercase {{loggedInDate | date | uppercase}}</p>
+    <div class="col-4"></div>
+
+</div>
+<span [ngClass]="deleteAcno? 'apply' : '' ">
+    <div class='row p-5 d-flex justify-content-around'>
+        <div class="col-4"></div>
+        <div class="col-4 ">
+            <a routerLink='/transactionHistory' > Transaction</a>
+
+            <app-animation-demo></app-animation-demo>
+        </div>
+        <div class="col-4">
+            <button (click)="deleteCallFromParent()">Delete Account</button>
+            <button (click)="logOut()">Logout</button>
+        </div>
+    
+    </div>
+    
+    
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <app-deleteconfirmation [item]="deleteAcno" (onDelete)='onDelete($event)' (onCancel)='onCancel()'></app-deleteconfirmation>
+        </div>
+        <div class="col-4"></div>
+        
+    </div>
+   
+    <div class="row  p-2 " >
+        <div class="col-4"></div>
+    
+        <div  class="col-4" >
+            <div class="d-flex justify-content-around bg-secondary mb-3">
+    
+                <div class="p-2 text-center">
+                    <div class="row ">
+                        <span appHighlight class="bg-warning">Deposit</span>
+    
+                    </div>
+                    <form (ngSubmit)="deposit()" [formGroup]='depositForm'>
+                        <div class="row p-1">
+                            <input class="form-control" type="text" id="acno" name="acno"
+                                placeholder="Enter your account number" formControlName="accno">
+                            <div class="text-danger validation"
+                                *ngIf="(this.depositForm.get('accno')?.touched||this.depositForm.get('accno')?.dirty)&&this.depositForm.get('accno')?.errors">
+                                Invalid accountnumber</div>
+    
+                        </div>
+    
+                        <div class="row p-1">
+                            <input class="form-control" type="password" id="password" name="password"
+                                placeholder="Enter your password" formControlName="password">
+                            <div class="text-danger validation"
+                                *ngIf="(this.depositForm.get('password')?.touched||this.depositForm.get('password')?.dirty)&&this.depositForm.get('password')?.errors">
+                                Invalid password</div>
+                        </div>
+                        <div class="row p-1">
+                            <input class="form-control" type="text" id="amount" name="amount" placeholder="amount"
+                                formControlName="amount">
+                            <div class="text-danger validation"
+                                *ngIf="(this.depositForm.get('amount')?.touched||this.depositForm.get('amount')?.dirty)&&this.depositForm.get('amount')?.errors">
+                                Invalid password</div>
+    
+                        </div>
+                        <div class="row p-1">
+                            <button class='btn btn-primary' type="submit">
+                                Deposit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    
+    
+    
+    
+    
+    <div class="row p-5">
+        <div class="col-4"></div>
+    
+        <div class="col-4">
+            <div class="d-flex justify-content-around bg-secondary mb-3">
+    
+                <div class="p-2 text-center">
+                    <div class="row bg-warning ">
+                        <span appHighlight >Withdrawal</span>
+    
+                    </div>
+                    <form (ngSubmit)='withdraw()' [formGroup]='withdrawalForm'>
+                        <div class="row p-1">
+                            <input class="form-control" type="text" id="acno" name="acno"
+                                placeholder="Enter your account number" formControlName="waccno">
+                            <div class="text-danger validation"
+                                *ngIf="(this.withdrawalForm.get('waccno')?.touched||this.withdrawalForm.get('waccno')?.dirty)&&this.withdrawalForm.get('waccno')?.errors">
+                                Invalid accountnumber</div>
+                        </div>
+                        <div class="row p-1">
+                            <input class="form-control" type="password" id="password" name="password"
+                                placeholder="Enter your password" formControlName="wpassword">
+                            <div class="text-danger validation"
+                                *ngIf="(this.withdrawalForm.get('wpassword')?.touched||this.withdrawalForm.get('wpassword')?.dirty)&&this.withdrawalForm.get('wpassword')?.errors">
+                                Invalid password</div>
+                        </div>
+                        <div class="row p-1">
+                            <input class="form-control" type="text" id="amount" name="amount" placeholder="amount"
+                                formControlName="wamount">
+                            <div class="text-danger validation"
+                                *ngIf="(this.withdrawalForm.get('wamount')?.touched||this.withdrawalForm.get('wamount')?.dirty)&&this.withdrawalForm.get('wamount')?.errors">
+                                Invalid amount</div>
+                        </div>
+                        <div class="row p-1">
+                            <button class='btn btn-primary' type="submit">
+                                Withdraw</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</span>

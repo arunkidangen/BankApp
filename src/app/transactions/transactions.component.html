@@ -1,0 +1,28 @@
+<div class="row m-5">
+    <div class="col-4"></div>
+    <div class="col-4 bg-dark">
+
+        <h1 class="text-white">Transaction History</h1>
+
+        <table class="table text-white  center-align table-bordered" >
+            <thead class=""> 
+                <tr>
+                    <th>Amount</th>
+                    <th>Type</th>
+                </tr>
+
+            </thead>
+            <tbody class="table text-white">
+                <tr *ngFor='let data of transactions'>
+                    <th>{{data.amount}}</th>
+                    <th>{{data.type}}</th>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+    <div class="col-4">
+        <a class='btn btn-primary m-5' routerLink='/dashboard'>Back to Dashboard</a>
+    </div>
+</div>

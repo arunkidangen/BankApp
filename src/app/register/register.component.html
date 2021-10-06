@@ -1,0 +1,82 @@
+<div class="row ">
+
+
+  <div class="col-12 col-md-3 col-sm-12">
+  </div>
+  <div class="col-12 col-md-6 col-sm-12 bg-dark mt-2 formclass">
+    <!-- <div class=" m-3 text-white text-center"> {{string1}} </div>
+        <div class=" m-3 text-white text-center"> {{usingNgModel}} </div> -->
+    <form (ngSubmit)='register()'>
+      <p class="text-white"> using ngModel</p>
+      <div class="mt-3 col-12 col-md-6 col-sm-12 forminput">
+        <input type="text" placeholderStr="Enter your username" class="form-control" [(ngModel)]="userName"
+          id='userName' name="userName">
+      </div>
+      <div class="mt-3 col-12 col-md-6 col-sm-12 forminput">
+        <input type="text" placeholder="Enter Your account number*" class="form-control " [(ngModel)]="accountNumber"
+          id='acc_number' name="acc_number">
+      </div>
+      <div class="mt-3 col-12 col-md-6 col-sm-12 forminput">
+        <input type="password" placeholder="Enter Your password* " class="form-control" id='pwd' [(ngModel)]="password"
+          name="password">
+      </div>
+      <div class="mt-3 col-12 col-md-6 col-sm-12 forminput">
+        <input type="text" placeholder="Enter Your balance*" class="form-control " id='blnc' [(ngModel)]="balance"
+          name="blnc">
+      </div>
+      <div class="row ">
+        <span><button class='btn btn-primary col-4 col-md-3 col-sm-12 mt-3 mb-3 btnClass' type="submit">
+            Register</button> </span>
+
+      </div>
+    </form>
+  </div>
+  <div class="col-3">
+  </div>
+</div>
+
+
+
+
+
+<div class="row ">
+
+
+  <div class="col-12 col-md-3 col-sm-12">
+  </div>
+  <div class="col-12 col-md-6 col-sm-12 bg-dark mt-2 formclass">
+    <!-- <div class=" m-3 text-white text-center"> {{string1}} </div>
+        <div class=" m-3 text-white text-center"> {{usingNgModel}} </div> -->
+    <form [formGroup]='registerForm' (ngSubmit)='registerUsingReactiveForms()'>
+      <p class="text-white"> using ReactiveForms</p>
+      <div class="mt-3 col-12 col-md-6 col-sm-12 forminput">
+        <input type="text" placeholder="Enter your username*" class="form-control"   formControlName="uName"
+          id='userName' name="userName">
+          <div class="text-danger" *ngIf="(this.registerForm.get('uName')?.touched||this.registerForm.get('uName')?.dirty)&&this.registerForm.get('uName')?.errors">Invalid username</div>
+      </div>
+      <div class="mt-3 col-12 col-md-6 col-sm-12 forminput">
+        <input type="text" placeholder="Enter Your account number*" class="form-control " formControlName="acno"
+          id='acc_number' name="acc_number">
+          <div class="text-danger" *ngIf="(this.registerForm.get('acno')?.touched||this.registerForm.get('acno')?.dirty)&&this.registerForm.get('acno')?.errors">Invalid account number</div>
+      </div>
+      <div class="mt-3 col-12 col-md-6 col-sm-12 forminput">
+        <input type="password" placeholder="Enter Your password* " class="form-control" id='pwd' formControlName="pswd"
+          name="password"> 
+          <div class="text-danger"*ngIf="(this.registerForm.get('pswd')?.touched||this.registerForm.get('pswd')?.dirty)&&this.registerForm.get('pswd')?.errors">Invalid password</div>
+
+      </div>
+      <div class="mt-3 col-12 col-md-6 col-sm-12 forminput">
+        <input type="text" placeholder="Enter Your balance*" class="form-control " id='blnc' formControlName="blnc"
+          name="blnc">
+      </div>
+      <div class="row ">
+        <span class="d-flex justify-content-center"><button class='btn btn-primary col-4 col-md-3 col-sm-12 mt-3 mb-3 btnClass' type="submit">
+            Register</button> <button class='btn btn-primary col-4 col-md-3 col-sm-12 pl-3  mt-3 mb-3 btnClass' routerLink=''>
+              Login</button> </span>
+
+      </div>
+    </form>
+  </div>
+  <div class="col-3">
+  </div>
+</div>
